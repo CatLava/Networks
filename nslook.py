@@ -1,6 +1,7 @@
 # python nslookup to add into shodan code
 import socket
 import re
+import geol
 
 web =  input("enter url :")
 ips = socket.getaddrinfo(web, 80)
@@ -21,4 +22,9 @@ for items in iplst2:
         k = i[5][2:-2]
         master.append(k)
 master = set(master)
-print(master)
+print('Found IPs:', master)
+def lst():
+    return master
+for i in master:
+    kk = geol.loc(i)
+    print(kk)
